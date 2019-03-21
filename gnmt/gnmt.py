@@ -153,7 +153,7 @@ def model_graph(features, mode, params):
 
     if mode == "infer":
         logits = rnn_cell.linear(de_outputs[:, -1,:], tvocab_size, "logit")
-        logits = tf.nn.softmax(logits)
+        logits = tf.nn.log_softmax(logits)
         return logits
     else:
         de_outputs = tf.reshape(de_outputs, [-1, params.hidden_size])
