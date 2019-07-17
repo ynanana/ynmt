@@ -165,7 +165,7 @@ class Model(nn.Module):
             index = index % self.tvocab_size
             return index, loop
 
-        max_len = x.shape[1] * 6
+        max_len = x.shape[1] * beam_size
         for i in range(max_len):
             input = torch.tensor(
                 [seq[-1] for seq in sequence_]).unsqueeze(-1).cuda()
